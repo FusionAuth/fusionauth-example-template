@@ -1,0 +1,15 @@
+{
+  "development": {
+    "mode": "development",
+    "httpPort": 3000,
+    "backend": {
+      "url": "http://localhost:8080"
+    }
+  },
+  "production": {
+    "mode": "production",
+    "backend": {
+      "url": "https://todo-backend-passport-node-example.mybluemix.net"
+    }
+  }
+}

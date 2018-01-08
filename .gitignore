@@ -1,0 +1,10 @@
+*.iws
+bower_components
+dist
+**/node_modules
+**/build
+**/npm-debug.log
+tmp
+application.zip
+*.DS_Store
+server/public
