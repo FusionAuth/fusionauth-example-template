@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import passport_logo from './assets/img/passport_logo.svg';
+import fusionauth_logo from './assets/img/fusionauth_logo.svg';
 import auth from './auth';
 import Greeting from './components/Greeting';
 
@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={passport_logo} className="App-logo" alt="logo" />
+          <img src={fusionauth_logo} className="App-logo" alt="logo" />
           <h2>Example</h2>
         </div>
         <div className="App-content">

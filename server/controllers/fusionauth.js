@@ -2,28 +2,28 @@
 
 const config = require('../config/config.js');
 const express = require('express');
-const Inversoft = require('passport-node-client');
+const FusionAuth = require('fusionauth-node-client');
 const router = express.Router();
-let passportClient = new Inversoft.PassportClient(config.passport.apiKey, config.passport.backendUrl);
+let client = new FusionAuth.FusionAuthClient(config.fusionauth.apiKey, config.fusionauth.applicationURL);
 
-// Return the Passport Configuration
-router.route('/passport/config').get((req, res) => {
-  delete config.passport.apiKey;
-  res.send(config.passport);
+// Return the FusionAuth Configuration
+router.route('/fusionauth/config').get((req, res) => {
+  delete config.fusionauth.apiKey;
+  res.send(config.fusionauth);
 });
 
 // Register a new user
-router.route('/passport/register').post((req, res) => {
+router.route('/fusionauth/register').post((req, res) => {
   // Fill out the registration part of the request but use the default roles
   let request = {
     user: req.body.user,
     registration: {
-      applicationId: config.passport.applicationId
+      applicationId: config.fusionauth.applicationId
     },
     skipVerification: true
   };
 
-  passportClient.register(null, request)
+  client.register(null, request)
     .then((response) => {
       res.send(response.successResponse);
     })
@@ -32,7 +32,7 @@ router.route('/passport/register').post((req, res) => {
     });
 });
 
-router.route('/passport/webhook').post((req, res) => {
+router.route('/fusionauth/webhook').post((req, res) => {
   const authorization = req.header('Authorization');
   if (authorization !== 'API-KEY') {
     res.status(403).send({

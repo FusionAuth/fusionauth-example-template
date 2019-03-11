@@ -1,16 +1,14 @@
-'use strict';
-
 var request = require('request');
 const configFile = require ('./config.json');
 
 var configuration;
 
-// Retrieve the Passport Configuration from our back end application.
+// Retrieve the FusionAuth Configuration
 var baseURL = configFile.development.backend.url;
 function retrieveConfiguration(callBack) {
-  request.get(baseURL + '/api/passport/config', function(err, res, body) {
+  request.get(baseURL + '/api/fusionauth/config', function(err, res, body) {
     if (!err && res.statusCode === 200) {
-        configFile.development.passport = JSON.parse(body);
+        configFile.development.fusionauth = JSON.parse(body);
         configuration = configFile.development;
 
       if (callBack) {
@@ -18,7 +16,7 @@ function retrieveConfiguration(callBack) {
       }
     } else {
       console.error(err);
-      throw new Error('Unable to retrieve the Passport configuration. [' + res.statusCode + ']');
+      throw new Error('Unable to retrieve the FusionAuth configuration. [' + res.statusCode + ']');
     }
   });
 }

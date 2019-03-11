@@ -5,12 +5,12 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require("body-parser");
 const application = require("./controllers/application.js");
-const passport = require("./controllers/passport.js");
+const fusionauth = require("./controllers/fusionauth.js");
 const config = require("./config/config.js");
 const http = require("http");
 
-// Ensure Passport is setup by calling the bootstrapper
-require("./lib/passport-bootstrap.js");
+// Ensure FusionAuth is setup by calling the bootstrapper
+require("./lib/fusionauth-bootstrap.js");
 
 // Cross-Origin Resource Sharing
 app.use(cors());
@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({type: "application/vnd.api+json"}));
 
 // Define the main routes
-app.use("/api/", [application, passport]);
+app.use("/api/", [application, fusionauth]);
 
 // This is the default handler that will always return the index.html file for all unhandled URLs
 app.use(function(req, res) {
@@ -51,4 +51,4 @@ app.use(function(req, res) {
 
 let port = config.httpPort;
 http.createServer(app).listen(port);
-console.log("The Passport Example application is started and listening at on port " + port);
+console.log("The FusionAuth Example application is started and listening at on port " + port);

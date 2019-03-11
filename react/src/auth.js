@@ -1,5 +1,4 @@
-const configuration = require("../config/config.js");
-import Fingerprint2 from 'fingerprintjs2';
+const configuration = require("./config/config.js");
 
 const auth = {
   login(email, password, callBack) {
@@ -36,7 +35,7 @@ const auth = {
     }).bind(this);
 
     configuration(function(config) {
-      xhr.open('GET', config.passport.backendUrl + '/api/user', true);
+      xhr.open('GET', config.fusionauth.applicationURL + '/api/user', true);
       xhr.setRequestHeader('Authorization', 'JWT ' + encodedJWT);
       xhr.send();
     });
@@ -85,7 +84,7 @@ const auth = {
     }).bind(this);
 
     configuration(function(config) {
-      xhr.open('POST', config.backend.url + '/api/passport/register', true);
+      xhr.open('POST', config.backend.url + '/api/fusionauth/register', true);
       xhr.setRequestHeader("Content-type", "application/json");
 
       const jsonRequest = JSON.stringify(requestBody);
@@ -130,28 +129,20 @@ const auth = {
       }
     }).bind(this);
 
-    // Generate a local unique device Id and keep it in local storage so we don't regenerate it often.
-    if (!localStorage.device) {
-      new Fingerprint2().get(function(result) {
-        localStorage.device = result;
-      });
-    }
-
     configuration(function(config) {
       const loginRequest = {
         code: code,
-        applicationId: config.passport.applicationId,
-        device: localStorage.device,
+        applicationId: config.fusionauth.applicationId,
         metaData: {
           device: {
             description: navigator.userAgent,
             type: 'BROWSER',
-            name: 'Passport Example'
+            name: 'FusionAuth Example'
           }
         },
         twoFactorId: twoFactorId
       };
-      xhr.open('POST', config.passport.backendUrl + '/api/two-factor/login', true);
+      xhr.open('POST', config.fusionauth.backendUrl + '/api/two-factor/login', true);
       xhr.setRequestHeader("Content-type", "application/json");
       xhr.send(JSON.stringify(loginRequest));
     });
@@ -187,9 +178,9 @@ const auth = {
       data.append('loginId', email);
       data.append('password', password);
       data.append('grant_type', 'password');
-      data.append('client_id', config.passport.applicationId);
+      data.append('client_id', config.fusionauth.applicationId);
 
-      xhr.open('POST', config.passport.backendUrl + '/oauth2/token', true);
+      xhr.open('POST', config.fusionauth.applicationURL + '/oauth2/token', true);
       xhr.send(data);
     });
 
@@ -231,19 +222,11 @@ const auth = {
       }
     }).bind(this);
 
-    // Generate a local unique device Id and keep it in local storage so we don't regenerate it often.
-    if (!localStorage.device) {
-      new Fingerprint2().get(function(result) {
-        localStorage.device = result;
-      });
-    }
-
     configuration(function(config) {
       const loginRequest = {
         loginId: email,
         password: password,
-        applicationId: config.passport.applicationId,
-        device: localStorage.device,
+        applicationId: config.fusionauth.applicationId,
         metaData: {
           device: {
             description: navigator.userAgent,
@@ -252,7 +235,7 @@ const auth = {
           }
         }
       };
-      xhr.open('POST', config.passport.backendUrl + '/api/login', true);
+      xhr.open('POST', config.fusionauth.applicationURL + '/api/login', true);
       xhr.setRequestHeader("Content-type", "application/json");
       xhr.send(JSON.stringify(loginRequest));
     });

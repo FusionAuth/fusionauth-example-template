@@ -9,7 +9,7 @@
       <option name="addBlankAfter" value="false" />
     </LanguageOptions>
   </component>
-  <component name="Encoding">
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
     <file url="PROJECT" charset="UTF-8" />
   </component>
   <component name="InspectionProjectProfileManager">
@@ -104,9 +104,6 @@
     <option wsh="false" />
     <option yui="false" />
   </component>
-  <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{node_modules fusionauth-examplte-template}" />
-  </component>
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="JSX" />
   </component>
@@ -128,7 +125,7 @@
       <HTMLCodeStyleSettings>
         <option name="HTML_ATTRIBUTE_WRAP" value="0" />
       </HTMLCodeStyleSettings>
-      <JSCodeStyleSettings>
+      <JSCodeStyleSettings version="0">
         <option name="SPACE_BEFORE_FUNCTION_LEFT_PARENTH" value="false" />
         <option name="USE_DOUBLE_QUOTES" value="false" />
       </JSCodeStyleSettings>
@@ -192,6 +189,13 @@
       </value>
     </option>
     <option name="USE_PER_PROJECT_SETTINGS" value="true" />
+  </component>
+  <component name="ProjectDictionaryState">
+    <dictionary name="degroff">
+      <words>
+        <w>fusionauth</w>
+      </words>
+    </dictionary>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />

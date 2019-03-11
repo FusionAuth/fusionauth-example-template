@@ -9,7 +9,7 @@
   "production": {
     "mode": "production",
     "backend": {
-      "url": "https://todo-backend-passport-node-example.mybluemix.net"
+      "url": "https://login.acme.com"
     }
   }
 }
