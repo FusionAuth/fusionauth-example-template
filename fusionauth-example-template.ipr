@@ -105,7 +105,7 @@
     <option yui="false" />
   </component>
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{node_modules passport-bluemix-example}" />
+    <file url="PROJECT" libraries="{node_modules fusionauth-examplte-template}" />
   </component>
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="JSX" />
@@ -205,7 +205,7 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/passport-example-template.iml" filepath="$PROJECT_DIR$/passport-example-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fusionauth-example-template.iml" filepath="$PROJECT_DIR$/fusionauth-example-template.iml" />
     </modules>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
@@ -228,7 +228,7 @@
     </contentEntries>
   </component>
   <component name="libraryTable">
-    <library name="node_modules passport-bluemix-example" type="javaScript">
+    <library name="node_modules fusionauth-example-template" type="javaScript">
       <properties>
         <option name="frameworkName" value="node_modules" />
       </properties>
