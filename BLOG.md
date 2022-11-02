@@ -13,4 +13,12 @@ In this blog post, we are going to examine how to use {THING} to authenticate wi
 ## Building the app
 {THING-specific prose here}
 
+### Configuring code to use the FusionAuth settings
+
+### Configuring code to protect the protected resource
+
+### Signing on
+
+### Signing out
+
 ## Wrapping up
