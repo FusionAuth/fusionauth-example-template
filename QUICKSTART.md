@@ -8,10 +8,19 @@ A quickstart is a guide that takes a user through a simple OAuth auth code grant
 # Example App
 An example app is a companion to a Quickstart, providing the basic setup for going through the Quickstart. Each example app will implement the Change Bank application, described below.
 
-Each example app repo contains
-* A docker-compose.yml file for standing up FusionAuth.
-* A stubbed-out application that can be integrated with FusionAuth, using the Quickstart as a guide. This stubbed-out application will contain the Change Bank web pages, and will just be lacking implementations of the OAuth-related back end endpoints.
-* A fully working application integration with FusionAuth. This is useful if you want to start with a working integration and build out from there, or if you want to see what the end result of the Quickstart is.
+## Example App Contents
+
+| Item | Description |
+| --- | --- |
+| README.md | A description of the project, and how to run it |
+| docker-compose.yml | A docker-compose config for starting FusionAuth |
+| kickstart/ | A directory containing a kickstart file for configuring FusionAuth |
+| stub-application/ | A directory containing a stubbed out app that a user can use with the quickstart documentation. This application will contain the Change Bank web pages, and will just be lacking implementations of the FusionAuth integration |
+| complete-application/ | A directory containing a fully working example application, which represents the end result of following the quickstart |
+
+## Creating an Example App
+To create an example app, copy the files from this repository to a new repo. Use a repo name of `fusionauth-quickstart-{web,api}-TECHSTACK` where 
+`TECHSTACK` describes the language and/or framework being demonstrated in the example app.
 
 ## Bundled FusionAuth
 Each example app contains a docker-compose.yml and a kickstart file that together stand up an instance of FusionAuth with an Application configured to work with the technology or framework that is being showcased in the Quickstart. This means using the standard port(s) and path(s) for the various OAuth handoffs.
@@ -41,7 +50,39 @@ The application page represents the logged in view for a user. This page will co
 
 ![Changebank home page: logged-in user](changebank/screenshots/changebank-loggedin.png)
 
-### Back End Endpoints
+### Back End Endpoints / Routes
 The application back end will need the following
-* An endpoint for the redirect URI registered with the FusionAuth Application, which performs the token exchange, and writes access token and refresh token cookies
-* An endpoint that FusionAuth will redirect the user to after logout. This endpoint will take the user to the home page
+
+| Path | Password-protected? | Description |
+| --- | --- | --- |
+| / | No | The application home page (logged-out view) |
+| /callback | No | The OAuth redirect URI, where a user is redirected after successfully logging in at FusionAuth. This endpoint performs the token exchange with FusionAuth to obtain the access token, refresh token, and id token for the user. It writes these tokens as cookies. |
+| /login | No | Constructs the OAuth authorize call, and redirects the user to FusionAuth's `/oauth2/authorize` endpoint |
+| /logout | Yes | Deletes the user's cookies and redirects to `/` |
+| /account | Yes | Takes the user to their bank account page. This page needs to be protected, so that a user needs to prove who they are before accessing a bank account. |
+
+### Protected Endpoints
+The `/account` and `/logout` endpoints need to be protected. `/account` provides access to a bank customer's bank account, so access needs to be 
+authorized. It's good practice to also secure `/logout`, since a CSRF attack could be used to force a user to unwittingly log out of the application.
+
+The following logic needs to be applied. This is best delivered as a function annotation or routing middleware, so that it can be easily applied to 
+many endpoints without a lot of copying of code and logic.
+
+* Is an access token present?
+  * If the access token is present, is it valid (does the signature check out)?
+    * If the access token's signature is valid
+      * Is the access token active (not expired)?
+        * If the access token is not expired, allow the request to proceed
+        * If the access token is expired, is a refresh token present?
+          * If a refresh token is present, attempt to refresh the access token
+            * If the refresh succeeds, allow the request to proceed
+            * If the refresh fails, redirect the user to `/login'
+          * If no refresh token is present, redirect the user to `/login`
+    * If the access token's signature is not valid
+      * Delete the user's cookies
+      * Redirect the user to `/login`
+  * If no access token is present, is a refresh token present?
+    * If a refresh token is present, attempt to refresh the access token
+      * If the refresh succeeds, allow the request to proceed
+      * If the refresh fails, redirect the user to `/login`
+    * If no refresh token is present, redirect the user to `/login`
