@@ -176,3 +176,7 @@ and a `TIP` with a green background.
 <Aside type="tip"> ... </Aside>
 
 ```
+
+# Deprecating existing repositories
+
+If there is an existing example app repository that matches up with the quickstart technology/framework/modality stack (another web ruby on rails example app, say), then you should update the readme to point to the quickstart guide, update the reference in site/_exampleapps.yml, and archive the example application.
