@@ -35,7 +35,7 @@ Each example app will implement the Change Bank application, described below.
 To create an example app, copy the files from this repository to a new repo. Use a repo name of `fusionauth-quickstart-LANGUAGE-FRAMEWORK-{web,api}` where 
 `LANGUAGE` is the base language, and `FRAMEWORK` is the library or framework being used for OAuth interactions.
 
-For example: `fusionauth-quickstart-web-python-flask`
+For example: `fusionauth-quickstart-python-flask-web`
 
 ## Bundled FusionAuth
 Each example app contains a docker-compose.yml and a kickstart file that together stand up an instance of FusionAuth with an Application configured to work with the technology or framework that is being showcased in the Quickstart. This means using the standard port(s) and path(s) for the various OAuth handoffs.
