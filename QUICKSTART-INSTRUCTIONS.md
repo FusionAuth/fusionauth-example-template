@@ -7,7 +7,7 @@ A quickstart is a guide that takes a user through a simple OAuth auth code grant
 * It's specific to a language and/or framework
 * It uses an off-the-shelf library, SDK, or built-in support for doing the OAuth interactions
 * It has a companion example app that serves both as a working example of the integration and as the source of code snippets for the Quickstart documentation
-* It's bundled with a FusionAuth docker-compose file and a kickstart file that together get FusionAuth set up to work with the given tech stack
+* It's bundled with a FusionAuth `docker compose` file and a kickstart file that together get FusionAuth set up to work with the given tech stack
 
 # The TL;DR
 Here are the basic things you need to do to produce a Quickstart. Read the sections below for more detail.
