@@ -17,6 +17,7 @@ Here are the basic things you need to do to produce a Quickstart. Read the secti
 - [ ] Create a `complete-application` directory that contains a working application
 - [ ] Create a README that describes how to run the application, and that links to the Quickstart documentation
 - [ ] Create the Quickstart documentation in the `fusionauth-site` repository
+- [ ] Add a GitHub action which at the very least installs the application once a month.
 
 # Example App
 Each Quickstart ships with a companion example app, which provides a working example of integrating the Quickstart's language or framework with FusionAuth.
