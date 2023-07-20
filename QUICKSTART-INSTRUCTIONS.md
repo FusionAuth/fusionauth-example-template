@@ -16,7 +16,7 @@ Here are the basic things you need to do to produce a Quickstart. Read the secti
 - [ ] Edit `kickstart/kickstart.json`, editing the OAuth `authorizedRedirectURLs` and `logoutURL` values
 - [ ] Create a `complete-application` directory that contains a working application
 - [ ] Create a README that describes how to run the application, and that links to the Quickstart documentation
-- [ ] Create the Quickstart documentation in the `fusionauth-site` repository
+- [ ] Create the Quickstart documentation in the `fusionauth-site` repository. This should include the following sections: intro, prerequisites, general architecture, getting started, authentication, Customization, Run the application, Next steps, Troubleshooting (you can look at https://fusionauth.io/docs/quickstarts/quickstart-ruby-rails-web for examples)
 - [ ] Add a GitHub action which at the very least installs the application once a month.
 
 # Example App
@@ -122,6 +122,20 @@ Create a new file named `quickstart-LANGUAGE-FLASK-{api,web}.mdx`, and add a fro
 add title, description, section, and icon items so that the Quickstart shows up at the right place in the nav, and with the right name and icon.
 
 In the Quickstart, take the reader through the building of an application. 
+
+This should include the following sections: 
+
+* Intro
+* Prerequisites
+* General Architecture
+* Getting Started
+* Authentication
+* Customization
+* Run the application
+* Next steps
+* Troubleshooting 
+
+You can look at https://fusionauth.io/docs/quickstarts/quickstart-ruby-rails-web for examples of the content. We may abstract some of this out to components, but for now, copy/pasta it.
 
 ## Code References
 To reference code, you'll use a plugin named `RemoteCode` to pull code out of your example application code and insert it
