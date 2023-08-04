@@ -114,6 +114,45 @@ The application back end will need the following
 The `/account` and `/logout` endpoints need to be protected. `/account` provides access to a bank customer's bank account, so access needs to be 
 authorized. It's good practice to also secure `/logout`, since a CSRF attack could be used to force a user to unwittingly log out of the application.
 
+## Next steps
+
+You should provide next steps for the user to explore FusionAuth more.
+
+## Example 
+
+When in doubt, you can use https://fusionauth.io/docs/quickstarts/quickstart-ruby-rails-web as an example.
+
+# Example API
+Each API Quickstart ships with a companion example API, which provides a working example of providing an API in the Quickstart's language or framework and consuming a FusionAuth access token.
+Each example app will implement features which make sense from the Changebank perspective.
+
+Include a diagram of making the request with and without the token.
+
+## Code
+
+Provide a `complete-application` directory with working code in it. You can use whatever framework or library a developer would use to create an API in the language. For example, with Spring, we used the Spring initializer.
+
+## Roles
+
+You should provide a teller and a customer role.
+
+## Endpoints
+
+* `/panic` it's a POST and only available to the teller role.
+* `/make-change` it's a GET and available to the teller and customer roles. It takes a parameter and makes change.
+
+## Getting the token
+
+Use the login API.
+
+## Token verification
+
+Make sure you check the signature, audience, issuer, and expiration time. Use an asymmetric signing key. RS256 is fine.
+
+## Example 
+
+When in doubt, you can use https://fusionauth.io/docs/quickstarts/quickstart-spring-api as an example.
+
 # Quickstart Documentation
 The Quickstart documentation lives in the [fusionauth-site repo](https://github.com/FusionAuth/fusionauth-site/), in the astro/src/content/quickstarts/ directory. 
 Look at the other Quickstarts to get the correct front matter for your document.
