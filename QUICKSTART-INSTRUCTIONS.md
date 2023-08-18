@@ -234,3 +234,10 @@ and a `TIP` with a green background.
 # Deprecating existing repositories
 
 If there is an existing example app repository that matches up with the quickstart technology/framework/modality stack (another web ruby on rails example app, say), then you should update the readme to point to the quickstart guide, update the reference in site/_exampleapps.yml, and archive the example application.
+
+# Redirects
+
+If you are porting over a docs quickstart (something under `/docs/v1/tech/tutorials/`) please:
+
+* update the link to the quickstart on the `/docs/v1/tech/tutorials/` index page to point to the quickstart
+* add a redirect. Edit `src/cloudfront/fusionauth-website-request-handler.js` and look for the rails quickstart line: `rd[d+'/tutorials/integrate-ruby-rails']= '/docs/quickstarts/quickstart-ruby-rails-web';` Add a similar line for your quickstart.
