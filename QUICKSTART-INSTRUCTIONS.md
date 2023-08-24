@@ -151,7 +151,7 @@ Make sure you check the signature, audience, issuer, and expiration time. Use an
 
 ## Example 
 
-When in doubt, you can use https://fusionauth.io/docs/quickstarts/quickstart-spring-api as an example.
+When in doubt, you can use https://fusionauth.io/docs/quickstarts/quickstart-springboot-api as an example.
 
 # Quickstart Documentation
 The Quickstart documentation lives in the [fusionauth-site repo](https://github.com/FusionAuth/fusionauth-site/), in the astro/src/content/quickstarts/ directory. 
