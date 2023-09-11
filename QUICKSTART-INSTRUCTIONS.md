@@ -92,12 +92,23 @@ The registration page is hosted by FusionAuth, but should be styled to look like
 
 The theme that ships with the included kickstart file applies decent styling, so you can copy that if you're rolling your own.
 
-![Changebank home page: logged-in user](changebank/screenshots/changebank-register.png)
+![Changebank home page: register user](changebank/screenshots/changebank-register.png)
 
 ### Application Page
 The application page represents the logged-in view for a user. This page will contain a logout button that takes the user to FusionAuth's /oauth2/logout endpoint
 
 ![Changebank home page: logged-in user](changebank/screenshots/changebank-loggedin.png)
+
+### Make Change Page
+
+The make change page lets a user enter a positive dollar value and make change from the value.
+
+This page can make change in one of two ways:
+
+* nickels and pennies
+* quarters, dimes, nickels and pennies
+
+Either way is acceptable.
 
 ### Back End Endpoints / Routes
 The application back end will need the following
