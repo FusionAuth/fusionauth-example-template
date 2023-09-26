@@ -156,15 +156,26 @@ You should provide a teller and a customer role.
 
 Use the login API.
 
+## Present the token
+
+Present the token in the Cookie header:
+
+```
+curl --cookie 'app.at=YOUR_TOKEN' http://localhost:4001/messages
+```
+
 ## Token verification
+
+Read the token from the cookie header (the `app.at` cookie), and then the `Authorization` header.
 
 Make sure you check the signature, audience, issuer, and expiration time. Use an asymmetric signing key. RS256 is fine.
 
 ## Example 
 
-When in doubt, you can use https://fusionauth.io/docs/quickstarts/quickstart-springboot-api as an example.
+When in doubt, you can use https://fusionauth.io/docs/quickstarts/quickstart-springboot-api as an example, except for reading from the cookie part.
 
 # Quickstart Documentation
+
 The Quickstart documentation lives in the [fusionauth-site repo](https://github.com/FusionAuth/fusionauth-site/), in the astro/src/content/quickstarts/ directory. 
 Look at the other Quickstarts to get the correct front matter for your document.
 
