@@ -261,5 +261,5 @@ If there is an existing example app repository that matches up with the quicksta
 
 If you are porting over a docs quickstart (something under `/docs/v1/tech/tutorials/`) please:
 
-* update the link to the quickstart on the `/docs/v1/tech/tutorials/` index page to point to the quickstart
+* update the link to the quickstart on the `/docs/v1/tech/tutorials/` index page to point to the quickstart in `site/_layouts/doc.liquid`.
 * add a redirect. Edit `src/cloudfront/fusionauth-website-request-handler.js` and look for the rails quickstart line: `rd[d+'/tutorials/integrate-ruby-rails']= '/docs/quickstarts/quickstart-ruby-rails-web';` Add a similar line for your quickstart.
