@@ -127,7 +127,7 @@ authorized. It's good practice to also secure `/logout`, since a CSRF attack cou
 
 ## Next steps
 
-You should provide next steps for the user to explore FusionAuth more.
+You should provide next steps for the user to explore FusionAuth more. Check the [Next Steps section](#next-steps-section) for more details.
 
 ## Example 
 
@@ -197,6 +197,94 @@ This should include the following sections:
 * Troubleshooting 
 
 You can look at https://fusionauth.io/docs/quickstarts/quickstart-ruby-rails-web for examples of the content. We may abstract some of this out to components, but for now, copy/pasta it.
+
+## Intro Section
+
+Just after all imports, add the `<Intro>` component for a quick introduction to your quickstart and pass both `technology` and `repositoryUrl` props.
+
+```mdx
+{/* Frontmatter and other imports */}
+import Intro from '/src/components/quickstarts/Intro.astro';
+
+<Intro technology={frontmatter.technology}
+       repositoryUrl="https://github.com/FusionAuth/fusionauth-quickstart-LANGUAGE-FRAMEWORK-{api,web}"/>
+```
+
+## Prerequisites Section
+
+Define the necessary tools to run the application.
+
+## General Architecture Section
+
+Choose one of `<LoginArchitectureApi>`, `<LoginArchitectureNative>`, `<LoginArchitectureSdk>` or `<LoginArchitectureWeb>`.
+
+```mdx
+{/* Frontmatter and other imports */}
+import LoginArchitectureApi from '/src/components/quickstarts/LoginArchitectureApi.astro';
+{/* or */}
+import LoginArchitectureNative from '/src/components/quickstarts/LoginArchitectureNative.astro';
+{/* or */}
+import LoginArchitectureSdk from '/src/components/quickstarts/LoginArchitectureSdk.astro';
+{/* or */}
+import LoginArchitectureWeb from '/src/components/quickstarts/LoginArchitectureWeb.astro';
+
+{/* Intro and Prerequisites */}
+
+## General Architecture    
+    
+<LoginArchitectureApi />
+{/* or */}
+<LoginArchitectureNative /> 
+{/* or */}
+<LoginArchitectureSdk /> 
+{/* or */}
+<LoginArchitectureWeb /> 
+```
+
+## Getting Started Section
+
+```mdx
+{/* Frontmatter and other imports */}
+import DockerSpinup from '/src/components/quickstarts/DockerSpinup.astro';
+
+{/* Intro, Prerequisites and General Architecture */}
+
+## Getting Started
+
+{/* Clone the code */}
+
+### Run FusionAuth Via Docker
+
+<DockerSpinup kickstartUri={frontmatter.codeRoot + "/kickstart/kickstart.json"} />
+```
+
+## Next Steps Section
+
+Choose between `<NextStepsApi>` and `<NextSteps>` if you are writing an API quickstart or not.
+
+```mdx
+import NextStepsApi from '/src/components/quickstarts/NextStepsApi.astro';
+{/* or */}
+import NextSteps from '/src/components/quickstarts/NextSteps.astro';
+
+{/* Your article... */}
+
+## Next Steps
+    
+<NextStepsApi />
+{/* or */}
+<NextSteps />
+```
+
+If you want to add custom items to the "Security" section, you can pass _slots_:
+
+```mdx
+<NextSteps>
+    <Fragment slot="security">
+         <li>Some specific step.</li>
+    </Fragment>
+</NextSteps>
+```
 
 ## Code References
 To reference code, you'll use a plugin named `RemoteCode` to pull code out of your example application code and insert it
